@@ -12,13 +12,7 @@ public class GetMenuDetailResDto {
     String menuImageURL;
 
     @Schema(name = "ingredients", example = "[{\"ingredientId\": 1, \"ingredientName\": \"양파\", \"ingredientImageURL\": \"https://image.com\", \"quantity\": \"1개\", \"price\": 1000}]")
-    List<IngredientInfo> ingredients;
+    List<IngredientRes> ingredients;
 
-    public static class IngredientInfo {
-        Long ingredientId;
-        String ingredientName;
-        String ingredientImageURL;
-        String quantity;
-        Double price;
-    }
+
 }
