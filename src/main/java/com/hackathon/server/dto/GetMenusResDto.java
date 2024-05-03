@@ -1,9 +1,11 @@
 package com.hackathon.server.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Builder;
 
 import java.time.LocalDateTime;
 
+@Builder
 public class GetMenusResDto {
 
     @Schema(name = "menuImgUrl", example = "asdfasdgdafds")
