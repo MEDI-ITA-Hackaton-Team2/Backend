@@ -1,17 +1,15 @@
 spring:
-  config:
-    activate:
-      on-profile: local
-
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/hackathondb
-    username: root
-    password:
+  profiles:
+    group:
+      local:
+        - local
+      dev:
+        - dev
+    active: local
 
   jpa:
     hibernate:
-      ddl-auto: validate
+      ddl-auto: update
     properties:
       hibernate:
         format_sql: true
