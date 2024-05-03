@@ -19,12 +19,14 @@ public class RawIngredient {
 
     private String ingredientName;
 
-    private Integer quantity;
+    private String quantity;
 
     private Double price;
 
+    private String ingredientImageURL;
+
     @Builder
-    public RawIngredient(String ingredientName, Integer quantity, Double price) {
+    public RawIngredient(String ingredientName, String quantity, Double price) {
         this.ingredientName = ingredientName;
         this.quantity = quantity;
         this.price = price;
