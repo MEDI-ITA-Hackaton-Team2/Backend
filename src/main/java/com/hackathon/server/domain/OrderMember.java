@@ -18,10 +18,10 @@ public class OrderMember {
 
     @ManyToOne
     @JoinColumn(name = "orderId", nullable = false)
-    private Order order;
+    private Orders order;
 
     @Builder
-    public OrderMember(Order order, Long userId) {
+    public OrderMember(Orders order, Long userId) {
         this.order = order;
         this.userId = userId;
     }

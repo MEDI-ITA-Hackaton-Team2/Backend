@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 @Entity
 @Getter
 @NoArgsConstructor
-public class Order {
+public class Orders {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,7 +33,7 @@ public class Order {
     private Long menuId;
 
     @Builder
-    public Order(String deliveryAddress, String deliveryDongId, Integer recruitNum, Status orderStatus, Long userId, OrderType orderType, LocalDateTime dueTime, Long menuId) {
+    public Orders(String deliveryAddress, String deliveryDongId, Integer recruitNum, Status orderStatus, Long userId, OrderType orderType, LocalDateTime dueTime, Long menuId) {
         this.deliveryAddress = deliveryAddress;
         this.deliveryDongId = deliveryDongId;
         this.recruitNum = recruitNum;

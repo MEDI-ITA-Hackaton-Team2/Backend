@@ -18,9 +18,9 @@ public class OrderDetail {
 
     @ManyToOne
     @JoinColumn(name = "orderId", nullable = false)
-    private Order order;
+    private Orders order;
 
-    public OrderDetail(Long ingredientId, Order order) {
+    public OrderDetail(Long ingredientId, Orders order) {
         this.ingredientId = ingredientId;
         this.order = order;
     }
