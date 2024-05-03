@@ -2,10 +2,7 @@ package com.hackathon.server.domain;
 
 import com.hackathon.server.domain.type.OrderType;
 import com.hackathon.server.domain.type.Status;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,8 +21,13 @@ public class Orders {
     private String deliveryAddress;
     private String deliveryDongId;
     private Integer recruitNum;
+
+    @Enumerated(EnumType.STRING)
     private Status orderStatus;
+
     private Long userId;
+
+    @Enumerated(EnumType.STRING)
     private OrderType orderType;
 
     private LocalDateTime dueTime;

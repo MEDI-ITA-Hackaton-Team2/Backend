@@ -12,7 +12,6 @@ public class IngredientRes {
     private final Double price;
     private final String ingredientImageURL;
 
-    @Builder
     public IngredientRes(RawIngredient rawIngredient) {
         this.ingredientId = rawIngredient.getIngredientId();
         this.ingredientName = rawIngredient.getIngredientName();
