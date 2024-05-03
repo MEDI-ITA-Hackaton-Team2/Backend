@@ -8,7 +8,7 @@ import java.util.List;
 
 @Getter
 @Builder
-public class GetMenuDetailResDto {
+public class MenuDetailRes {
 
     @Schema(name = "menuImageURL", example = "1")
     String menuImageURL;

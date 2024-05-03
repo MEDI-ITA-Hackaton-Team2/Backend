@@ -8,7 +8,7 @@ import java.util.List;
 
 @Getter
 @Builder
-public class GetOrderMemberResDto {
+public class OrderMemberRes {
 
     @Schema(name = "totalRecruit", example = "4")
     Integer totalRecruit;

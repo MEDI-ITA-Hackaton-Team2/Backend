@@ -6,7 +6,7 @@ import lombok.Builder;
 import java.time.LocalDateTime;
 
 @Builder
-public class GetMenusResDto {
+public class MenuRes {
 
     @Schema(name = "menuImgUrl", example = "asdfasdgdafds")
     String menuImgUrl;
