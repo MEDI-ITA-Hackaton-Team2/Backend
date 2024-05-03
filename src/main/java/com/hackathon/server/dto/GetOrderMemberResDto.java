@@ -1,11 +1,13 @@
 package com.hackathon.server.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Builder;
 import lombok.Getter;
 
 import java.util.List;
 
 @Getter
+@Builder
 public class GetOrderMemberResDto {
 
     @Schema(name = "totalRecruit", example = "4")
