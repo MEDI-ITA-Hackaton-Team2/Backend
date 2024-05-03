@@ -2,7 +2,7 @@ package com.hackathon.server.service.impl;
 
 import com.hackathon.server.domain.OrderMember;
 import com.hackathon.server.domain.Orders;
-import com.hackathon.server.dto.GetOrderMemberResDto;
+import com.hackathon.server.dto.OrderMemberRes;
 import com.hackathon.server.repository.OrderMemberRepository;
 import com.hackathon.server.repository.OrdersRepository;
 import com.hackathon.server.repository.UserRepository;
@@ -19,11 +19,11 @@ public class OrdersServiceImpl implements OrdersService {
     private final OrderMemberRepository orderMemberRepository;
 
     @Override
-    public GetOrderMemberResDto getOrder(Long orderId) {
+    public OrderMemberRes getOrder(Long orderId) {
 
         Orders order =  ordersRepository.findById(orderId).get();
 
-        GetOrderMemberResDto response = GetOrderMemberResDto.builder()
+        OrderMemberRes response = OrderMemberRes.builder()
                 .currentRecruit(orderMemberRepository.findByOrderOrderId(orderId).size())
                 .totalRecruit(order.getRecruitNum())
                 .userNmList(orderMemberRepository.findByOrderOrderId(orderId)

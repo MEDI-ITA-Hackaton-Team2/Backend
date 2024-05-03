@@ -1,7 +1,7 @@
 package com.hackathon.server.service;
 
-import com.hackathon.server.dto.GetOrderMemberResDto;
+import com.hackathon.server.dto.OrderMemberRes;
 
 public interface OrdersService {
-    GetOrderMemberResDto getOrder(Long orderId);
+    OrderMemberRes getOrder(Long orderId);
 }
