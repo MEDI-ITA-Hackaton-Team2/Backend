@@ -1,4 +1,4 @@
-package com.hackathon.server.global.config;
+package com.hackathon.server.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;

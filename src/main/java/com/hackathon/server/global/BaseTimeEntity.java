@@ -1,4 +1,4 @@
-package com.hackathon.server.global.domain;
+package com.hackathon.server.global;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;
