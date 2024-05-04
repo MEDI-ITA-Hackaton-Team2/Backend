@@ -66,7 +66,7 @@ public class MenuRepositoryImpl implements MenuRepositoryCustom {
         return jpaQueryFactory.selectFrom(recipe)
                 .leftJoin(rawIngredient).on(recipe.ingredientId.eq(rawIngredient.ingredientId))
                 .where(recipe.menu.menuId.eq(menuId))
-                .transform(groupBy(menu.menuId)
+                .transform(groupBy(recipe.recipeId)
                         .list(Projections.constructor(
                                 IngredientRes.class,
                                 rawIngredient
