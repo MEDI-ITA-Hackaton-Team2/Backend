@@ -40,8 +40,8 @@ public class MenuServiceImpl implements MenuService {
     }
 
     @Override
-    public List<MenuRes> getMenuList(String menuNm, Long ingredientId, List<Long> dongIdList, String sortType, Double maxPrice) {
-        return menuRepository.selectMenuList(menuNm, ingredientId, dongIdList, sortType, maxPrice);
+    public List<MenuRes> getMenuList(String menuNm, Long ingredientId, Long dongId, String sortType, Double maxPrice) {
+        return menuRepository.selectMenuList(menuNm, ingredientId, dongId, sortType, maxPrice);
     }
 
     @Override

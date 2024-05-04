@@ -36,7 +36,7 @@ public class MenuController {
     @GetMapping("")
     public ResponseEntity<?> getMenuList(@RequestParam(required = false) String menuNm,
                                          @RequestParam(required = false) Long ingredientId,
-                                         @RequestParam(required = false) List<Long> dongNm,
+                                         @RequestParam(required = false) Long dongNm,
                                          @RequestParam(required = false) String sortType,
                                          @RequestParam(required = false) Double maxPrice) {
         List<MenuRes> menuResList = menuService.getMenuList(menuNm, ingredientId, dongNm, sortType, maxPrice);

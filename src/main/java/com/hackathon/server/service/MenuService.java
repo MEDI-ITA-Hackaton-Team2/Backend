@@ -12,7 +12,7 @@ public interface MenuService {
 
     List<DongRes> getDongList();
 
-    List<MenuRes> getMenuList(String menuNm, Long ingredientId, List<Long> dongIdList, String sortType, Double maxPrice);
+    List<MenuRes> getMenuList(String menuNm, Long ingredientId, Long dongId, String sortType, Double maxPrice);
 
     Integer saveMenu(MultipartFile file, MenuPostReq menuPostReq);
     MenuDetailRes getMenuDetail(Long menuId);

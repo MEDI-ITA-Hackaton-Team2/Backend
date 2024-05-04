@@ -24,18 +24,15 @@ public class MenuRepositoryImpl implements MenuRepositoryCustom {
     private final JPAQueryFactory jpaQueryFactory;
 
     @Override
-    public List<MenuRes> selectMenuList(String menuNm, Long ingredientId, List<Long> dongIdList, String sortType, Double maxPrice) {
+    public List<MenuRes> selectMenuList(String menuNm, Long ingredientId, Long dongId, String sortType, Double maxPrice) {
         BooleanBuilder builder = new BooleanBuilder();
 
         if(menuNm != null && !menuNm.isEmpty()) {
             builder.and(menu.menuName.eq(menuNm));
         }
 
-        if(!dongIdList.isEmpty()) {
-            builder.and(orders.deliveryDongId.eq(String.valueOf(dongIdList.get(0))));
-            for (Long l : dongIdList) {
-                builder.or(orders.deliveryDongId.eq(String.valueOf(l)));
-            }
+        if(dongId != null) {
+            builder.and(orders.deliveryDongId.eq(dongId));
         }
 
         if (maxPrice != null) {

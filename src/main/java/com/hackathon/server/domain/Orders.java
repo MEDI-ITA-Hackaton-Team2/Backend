@@ -19,7 +19,7 @@ public class Orders {
     private Long orderId;
 
     private String deliveryAddress;
-    private String deliveryDongId;
+    private Long deliveryDongId;
     private Integer recruitNum;
 
     @Enumerated(EnumType.STRING)
@@ -35,7 +35,7 @@ public class Orders {
     private Long menuId;
 
     @Builder
-    public Orders(String deliveryAddress, String deliveryDongId, Integer recruitNum, Status orderStatus, Long userId, OrderType orderType, LocalDateTime dueTime, Long menuId) {
+    public Orders(String deliveryAddress, Long deliveryDongId, Integer recruitNum, Status orderStatus, Long userId, OrderType orderType, LocalDateTime dueTime, Long menuId) {
         this.deliveryAddress = deliveryAddress;
         this.deliveryDongId = deliveryDongId;
         this.recruitNum = recruitNum;
