@@ -43,8 +43,8 @@ public class MenuController {
         return ResponseEntity.ok(BaseResponse.ofSuccess(menuResList));
     }
 
-    @GetMapping("")
-    public ResponseEntity<?> getMenuDetail(@RequestParam(required = false) Long menuId) {
+    @GetMapping("/{menuId}")
+    public ResponseEntity<?> getMenuDetail(@PathVariable Long menuId) {
         return ResponseEntity.ok(BaseResponse.ofSuccess(menuService.getMenuDetail(menuId)));
 
     }

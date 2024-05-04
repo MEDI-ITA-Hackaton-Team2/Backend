@@ -8,7 +8,6 @@ import lombok.Getter;
 
 import java.time.LocalDateTime;
 
-@Builder
 @Getter
 public class MenuRes {
 
