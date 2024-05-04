@@ -24,12 +24,12 @@ public class MenuRes {
     Integer totalRecruit;
 
     @Schema(name = "currentRecruit", example = "3")
-    Integer currentRecruit;
+    Long currentRecruit;
 
     @Schema(name = "endAt", example = "2021-08-01T00:00:00")
     LocalDateTime endAt;
 
-    public MenuRes(Menu menu, Orders order, int currentRecruit) {
+    public MenuRes(Menu menu, Orders order, Long currentRecruit) {
         this.menuImgUrl = menu.getMenuImageURL();
         this.menuNm = menu.getMenuName();
         this.pricePerPerson = menu.getMenuPrice() / order.getRecruitNum();
