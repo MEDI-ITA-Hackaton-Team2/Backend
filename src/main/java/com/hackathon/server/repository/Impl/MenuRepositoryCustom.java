@@ -6,7 +6,7 @@ import com.hackathon.server.dto.MenuRes;
 import java.util.List;
 
 public interface MenuRepositoryCustom {
-    List<MenuRes> selectMenuList(String menuNm, Long ingredientId, Long dongId, String sortType, Double maxPrice);
+    List<MenuRes> selectMenuList(String menuNm, Long ingredientId, Long dongId, Double maxPrice);
 
     List<IngredientRes> selectMenuIngredientList(Long menuId);
 }

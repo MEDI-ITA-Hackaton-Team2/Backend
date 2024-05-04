@@ -39,7 +39,7 @@ public class MenuController {
                                          @RequestParam(required = false) Long dongNm,
                                          @RequestParam(required = false) String sortType,
                                          @RequestParam(required = false) Double maxPrice) {
-        List<MenuRes> menuResList = menuService.getMenuList(menuNm, ingredientId, dongNm, sortType, maxPrice);
+        List<MenuRes> menuResList = menuService.getMenuList(menuNm, ingredientId, dongNm, maxPrice);
         return ResponseEntity.ok(BaseResponse.ofSuccess(menuResList));
     }
 

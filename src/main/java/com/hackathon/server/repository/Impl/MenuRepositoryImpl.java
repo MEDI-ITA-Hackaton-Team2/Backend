@@ -1,10 +1,11 @@
 package com.hackathon.server.repository.Impl;
 
 import com.hackathon.server.dto.IngredientRes;
-import com.hackathon.server.dto.MenuDetailRes;
 import com.hackathon.server.dto.MenuRes;
 import com.querydsl.core.BooleanBuilder;
+import com.querydsl.core.types.ExpressionUtils;
 import com.querydsl.core.types.Projections;
+import com.querydsl.jpa.JPAExpressions;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -24,7 +25,7 @@ public class MenuRepositoryImpl implements MenuRepositoryCustom {
     private final JPAQueryFactory jpaQueryFactory;
 
     @Override
-    public List<MenuRes> selectMenuList(String menuNm, Long ingredientId, Long dongId, String sortType, Double maxPrice) {
+    public List<MenuRes> selectMenuList(String menuNm, Long ingredientId, Long dongId, Double maxPrice) {
         BooleanBuilder builder = new BooleanBuilder();
 
         if(menuNm != null && !menuNm.isEmpty()) {
@@ -45,13 +46,16 @@ public class MenuRepositoryImpl implements MenuRepositoryCustom {
                 .leftJoin(recipe).on(menu.menuId.eq(recipe.menu.menuId))
                 .where(builder)
                 .orderBy(orders.dueTime.desc())
-                .groupBy(menu.menuId)
                 .transform(groupBy(menu.menuId)
                         .list(Projections.constructor(
                                 MenuRes.class,
                                 menu,
                                 orders,
-                                orderMember.count().as("currentRecruit")
+                                ExpressionUtils.as(
+                                        JPAExpressions.select(orderMember.count())
+                                                .from(orderMember)
+                                                .where(orderMember.order.orderId.eq(orders.orderId))
+                                        , "currentRecruit")
                         )));
 
     }
