@@ -36,10 +36,10 @@ public class MenuController {
     @GetMapping("")
     public ResponseEntity<?> getMenuList(@RequestParam(required = false) String menuNm,
                                          @RequestParam(required = false) Long ingredientId,
-                                         @RequestParam(required = false) List<Long> dongList,
+                                         @RequestParam(required = false) List<Long> dongNm,
                                          @RequestParam(required = false) String sortType,
                                          @RequestParam(required = false) Double maxPrice) {
-        List<MenuRes> menuResList = menuService.getMenuList(menuNm, ingredientId, dongList, sortType, maxPrice);
+        List<MenuRes> menuResList = menuService.getMenuList(menuNm, ingredientId, dongNm, sortType, maxPrice);
         return ResponseEntity.ok(BaseResponse.ofSuccess(menuResList));
     }
 
