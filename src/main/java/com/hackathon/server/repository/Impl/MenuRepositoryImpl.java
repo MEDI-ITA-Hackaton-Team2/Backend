@@ -1,5 +1,7 @@
 package com.hackathon.server.repository.Impl;
 
+import com.hackathon.server.dto.IngredientRes;
+import com.hackathon.server.dto.MenuDetailRes;
 import com.hackathon.server.dto.MenuRes;
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.Projections;
@@ -13,6 +15,7 @@ import static com.hackathon.server.domain.QMenu.menu;
 import static com.hackathon.server.domain.QOrders.orders;
 import static com.hackathon.server.domain.QRecipe.recipe;
 import static com.hackathon.server.domain.QOrderMember.orderMember;
+import static com.hackathon.server.domain.QRawIngredient.rawIngredient;
 import static com.querydsl.core.group.GroupBy.groupBy;
 
 @Repository
@@ -54,5 +57,18 @@ public class MenuRepositoryImpl implements MenuRepositoryCustom {
                                 orderMember.count().as("currentRecruit")
                         )));
 
+    }
+
+    @Override
+    public List<IngredientRes> selectMenuIngredientList(Long menuId) {
+
+        return jpaQueryFactory.selectFrom(recipe)
+                .leftJoin(rawIngredient).on(recipe.ingredientId.eq(rawIngredient.ingredientId))
+                .where(recipe.menu.menuId.eq(menuId))
+                .transform(groupBy(menu.menuId)
+                        .list(Projections.constructor(
+                                IngredientRes.class,
+                                rawIngredient
+                        )));
     }
 }

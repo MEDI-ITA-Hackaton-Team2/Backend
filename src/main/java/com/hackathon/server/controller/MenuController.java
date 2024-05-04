@@ -33,4 +33,9 @@ public class MenuController {
         List<MenuRes> menuResList = menuService.getMenuList(menuNm, ingredientId, dongList, sortType, maxPrice);
         return ResponseEntity.ok(BaseResponse.ofSuccess(menuResList));
     }
+
+    @GetMapping("")
+    public ResponseEntity<?> getMenuDetail(@RequestParam(required = false) Long menuId) {
+        return ResponseEntity.ok(BaseResponse.ofSuccess(menuService.getMenuDetail(menuId)));
+    }
 }
