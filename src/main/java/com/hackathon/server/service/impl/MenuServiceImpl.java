@@ -1,13 +1,21 @@
 package com.hackathon.server.service.impl;
 
-import com.hackathon.server.domain.Dong;
+
 import com.hackathon.server.domain.Menu;
 import com.hackathon.server.dto.DongRes;
 import com.hackathon.server.dto.MenuPostReq;
+
+
+import com.hackathon.server.dto.IngredientRes;
+import com.hackathon.server.dto.MenuDetailRes;
+
 import com.hackathon.server.dto.MenuRes;
+import com.hackathon.server.global.CustomException;
+import com.hackathon.server.global.status.BaseExceptionResponseStatus;
 import com.hackathon.server.repository.DongRepository;
 import com.hackathon.server.repository.MenuRepository;
 import com.hackathon.server.repository.RawIngredientRepository;
+import com.hackathon.server.repository.RecipeRepository;
 import com.hackathon.server.service.MenuService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -20,7 +28,11 @@ import java.util.List;
 public class MenuServiceImpl implements MenuService {
     private final DongRepository dongRepository;
     private final MenuRepository menuRepository;
+
     private final RawIngredientRepository rawIngredientRepository;
+
+    private final RecipeRepository recipeRepository;
+
 
     @Override
     public List<DongRes> getDongList() {
@@ -29,7 +41,15 @@ public class MenuServiceImpl implements MenuService {
 
     @Override
     public List<MenuRes> getMenuList(String menuNm, Long ingredientId, List<Long> dongIdList, String sortType, Double maxPrice) {
-        return null;
+        return menuRepository.selectMenuList(menuNm, ingredientId, dongIdList, sortType, maxPrice);
+    }
+
+    @Override
+    public MenuDetailRes getMenuDetail(Long menuId) {
+        Menu menu = menuRepository.findById(menuId)
+                .orElseThrow(() -> new CustomException(BaseExceptionResponseStatus.INVALID_MENU));
+        List<IngredientRes> ingredientResList = menuRepository.selectMenuIngredientList(menuId);
+        return new MenuDetailRes(menu.getMenuImageURL(), ingredientResList);
     }
 
     @Override

@@ -16,5 +16,8 @@ public class MenuDetailRes {
     @Schema(name = "ingredients", example = "[{\"ingredientId\": 1, \"ingredientName\": \"양파\", \"ingredientImageURL\": \"https://image.com\", \"quantity\": \"1개\", \"price\": 1000}]")
     List<IngredientRes> ingredients;
 
-
+    public MenuDetailRes(String menuImageURL, List<IngredientRes> ingredients) {
+        this.menuImageURL = menuImageURL;
+        this.ingredients = ingredients;
+    }
 }

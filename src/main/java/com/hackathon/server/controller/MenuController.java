@@ -27,8 +27,25 @@ public class MenuController {
         return ResponseEntity.ok(BaseResponse.ofSuccess(menuService.getDongList()));
     }
 
+
     @PostMapping(value = "" , consumes = {APPLICATION_JSON_VALUE, MULTIPART_FORM_DATA_VALUE})
     public ResponseEntity<?> saveMenu(@RequestPart(value = "menuImage") MultipartFile menuImage, @RequestPart(value = "menuInfo") MenuPostReq menuPostReq) {
         return ResponseEntity.ok(BaseResponse.ofSuccess(menuService.saveMenu(menuImage, menuPostReq)));
+    }
+    
+    @GetMapping("")
+    public ResponseEntity<?> getMenuList(@RequestParam(required = false) String menuNm,
+                                         @RequestParam(required = false) Long ingredientId,
+                                         @RequestParam(required = false) List<Long> dongList,
+                                         @RequestParam(required = false) String sortType,
+                                         @RequestParam(required = false) Double maxPrice) {
+        List<MenuRes> menuResList = menuService.getMenuList(menuNm, ingredientId, dongList, sortType, maxPrice);
+        return ResponseEntity.ok(BaseResponse.ofSuccess(menuResList));
+    }
+
+    @GetMapping("")
+    public ResponseEntity<?> getMenuDetail(@RequestParam(required = false) Long menuId) {
+        return ResponseEntity.ok(BaseResponse.ofSuccess(menuService.getMenuDetail(menuId)));
+
     }
 }
