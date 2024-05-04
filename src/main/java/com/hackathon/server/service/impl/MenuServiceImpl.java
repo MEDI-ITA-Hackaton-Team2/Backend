@@ -4,6 +4,7 @@ import com.hackathon.server.domain.Dong;
 import com.hackathon.server.dto.DongRes;
 import com.hackathon.server.dto.MenuRes;
 import com.hackathon.server.repository.DongRepository;
+import com.hackathon.server.repository.MenuRepository;
 import com.hackathon.server.service.MenuService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,6 +15,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MenuServiceImpl implements MenuService {
     private final DongRepository dongRepository;
+    private final MenuRepository menuRepository;
 
     @Override
     public List<DongRes> getDongList() {
@@ -22,6 +24,6 @@ public class MenuServiceImpl implements MenuService {
 
     @Override
     public List<MenuRes> getMenuList(String menuNm, Long ingredientId, List<Long> dongIdList, String sortType, Double maxPrice) {
-        return null;
+        return menuRepository.selectMenuList(menuNm, ingredientId, dongIdList, sortType, maxPrice);
     }
 }

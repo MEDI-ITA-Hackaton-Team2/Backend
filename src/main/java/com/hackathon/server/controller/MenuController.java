@@ -23,4 +23,14 @@ public class MenuController {
     public ResponseEntity<?> getDongList() {
         return ResponseEntity.ok(BaseResponse.ofSuccess(menuService.getDongList()));
     }
+
+    @GetMapping("")
+    public ResponseEntity<?> getMenuList(@RequestParam(required = false) String menuNm,
+                                         @RequestParam(required = false) Long ingredientId,
+                                         @RequestParam(required = false) List<Long> dongList,
+                                         @RequestParam(required = false) String sortType,
+                                         @RequestParam(required = false) Double maxPrice) {
+        List<MenuRes> menuResList = menuService.getMenuList(menuNm, ingredientId, dongList, sortType, maxPrice);
+        return ResponseEntity.ok(BaseResponse.ofSuccess(menuResList));
+    }
 }
